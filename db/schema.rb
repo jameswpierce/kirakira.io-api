@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_222711) do
+ActiveRecord::Schema.define(version: 2019_12_07_235637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.bigint "deck_id", null: false
+    t.text "question"
+    t.text "answer"
+    t.integer "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deck_id"], name: "index_cards_on_deck_id"
+  end
 
   create_table "decks", force: :cascade do |t|
     t.string "title"
@@ -24,6 +34,18 @@ ActiveRecord::Schema.define(version: 2019_12_07_222711) do
   create_table "decks_users", id: false, force: :cascade do |t|
     t.bigint "deck_id", null: false
     t.bigint "user_id", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "card_id", null: false
+    t.datetime "next_review_at"
+    t.integer "level"
+    t.boolean "is_locked"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["card_id"], name: "index_reviews_on_card_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,4 +61,7 @@ ActiveRecord::Schema.define(version: 2019_12_07_222711) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cards", "decks"
+  add_foreign_key "reviews", "cards"
+  add_foreign_key "reviews", "users"
 end

@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"rufo.exe": "/Users/jamespierce/.rvm/gems/ruby-2.6.3/bin/rufo",
+		"ruby.format": "rufo"
+	}
+}
