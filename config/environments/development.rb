@@ -1,4 +1,11 @@
 Rails.application.configure do
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'localhost:3001'
+      resource '*', headers: :any, methods: [:get, :post, :options]
+    end
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
