@@ -4,7 +4,11 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
-    @cards = Card.all
+    if params[:deck_id]
+      @cards = Card.where(deck_id: params[:deck_id])
+    else
+      @cards = Card.all
+    end
   end
 
   # GET /cards/1
@@ -41,13 +45,14 @@ class CardsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_card
-      @card = Card.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def card_params
-      params.require(:card).permit(:deck_id, :question, :answer, :order)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_card
+    @card = Card.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def card_params
+    params.require(:card).permit(:deck_id, :question, :answer, :order)
+  end
 end

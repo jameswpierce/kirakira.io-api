@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :reviews
   resources :cards
   devise_for :users
-  resources :decks
+  resources :decks, shallow: true do
+    resources :cards
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
