@@ -18,6 +18,7 @@ RSpec.describe Review, type: :model do
   context 'associations' do
     it { should belong_to(:user) }
     it { should belong_to(:card) }
+    it { should belong_to(:deck) }
   end
 
   context 'validations' do

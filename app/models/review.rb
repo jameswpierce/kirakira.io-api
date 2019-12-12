@@ -18,6 +18,7 @@ class Review < ApplicationRecord
 
   belongs_to :user
   belongs_to :card
+  belongs_to :deck
 
   validates :level, numericality: {
     only_integer: true,

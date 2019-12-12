@@ -4,7 +4,11 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    if params[:deck_id]
+      @reviews = Review.where(deck_id: params[:deck_id])
+    else
+      @reviews = Review.all
+    end
   end
 
   # GET /reviews/1

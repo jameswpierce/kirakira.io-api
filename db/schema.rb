@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_07_235637) do
+ActiveRecord::Schema.define(version: 2019_12_12_022526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,9 @@ ActiveRecord::Schema.define(version: 2019_12_07_235637) do
     t.boolean "is_locked"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "deck_id", default: 1, null: false
     t.index ["card_id"], name: "index_reviews_on_card_id"
+    t.index ["deck_id"], name: "index_reviews_on_deck_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -63,5 +65,6 @@ ActiveRecord::Schema.define(version: 2019_12_07_235637) do
 
   add_foreign_key "cards", "decks"
   add_foreign_key "reviews", "cards"
+  add_foreign_key "reviews", "decks"
   add_foreign_key "reviews", "users"
 end
