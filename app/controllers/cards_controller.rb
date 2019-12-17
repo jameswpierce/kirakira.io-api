@@ -4,10 +4,23 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
+    limit = if params[:limit].to_i > 0
+      then params[:limit].to_i
+      else 20
+      end
+    page = if params[:page].to_i > 0
+      then params[:page].to_i
+      else 1
+      end
     if params[:deck_id]
-      @cards = Card.where(deck_id: params[:deck_id])
+      @cards = Card
+        .where(deck_id: params[:deck_id])
+        .limit(limit).offset(page - 1 * limit)
     else
-      @cards = Card.all
+      @cards = Card
+        .all
+        .limit(limit)
+        .offset((page - 1) * limit)
     end
   end
 
@@ -53,6 +66,6 @@ class CardsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def card_params
-    params.require(:card).permit(:deck_id, :question, :answer, :order)
+    params.require(:card).permit(:deck_id, :question, :answer, :order, :lesson)
   end
 end
