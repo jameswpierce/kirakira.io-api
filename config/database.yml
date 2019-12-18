@@ -26,4 +26,9 @@ test:
   username: kirakiraio
   password: kirakiraio
 
-
+production:
+  <<: *default
+  database: kirakiraio_production
+  pool: 5
+  username: kirakiraio
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
