@@ -6,7 +6,7 @@ ruby '2.6.3'
 
 gem 'rails', '~> 6.0.1'
 gem 'pg'
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
 # Use Redis adapter to run Action Cable in production
