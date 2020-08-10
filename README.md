@@ -7,4 +7,4 @@ Areas of interest
 
 `/spec/models/review_spec.rb`
 
-`/app/models.review.rb`
+`/app/models/review.rb`
