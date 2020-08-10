@@ -1,24 +1,10 @@
-# README
+# Spaced Repetition System API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Example Rails 6 project to illustrate elementary proficiency with TDD in Rails. Huge flashing WIP sign.
 
-Things you may want to cover:
 
-* Ruby version
+Areas of interest 
 
-* System dependencies
+`/spec/models/review_spec.rb`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`/app/models.review.rb`
