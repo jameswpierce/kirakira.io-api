@@ -1,6 +1,6 @@
 # Spaced Repetition System API
 
-Example Rails 6 project to illustrate elementary proficiency with TDD in Rails. Huge flashing WIP sign.
+Example Rails 6 project to illustrate elementary proficiency with TDD in Rails. **Huge flashing WIP sign.**
 
 
 Areas of interest 
